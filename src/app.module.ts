@@ -11,6 +11,7 @@ import { ReviewsModule } from './reviews/reviews.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { AppConfigModule } from './config/config.module';
 import { ServiceRequestsModule } from './service-requests/service-requests.module';
+import { UploadModule } from './upload/upload.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { ServiceRequestsModule } from './service-requests/service-requests.modul
     ReviewsModule,
     NotificationsModule,
     ServiceRequestsModule,
+    UploadModule,
   ],
   controllers: [AppController],
   providers: [AppService],

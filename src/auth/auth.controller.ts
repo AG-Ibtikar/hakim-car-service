@@ -47,6 +47,13 @@ export class AuthController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @Get('verify-admin')
+  @HttpCode(HttpStatus.OK)
+  async verifyAdmin(@Request() req: ExpressRequest) {
+    return this.authService.verifyAdmin(req.user);
+  }
+
+  @UseGuards(JwtAuthGuard)
   @Get('profile')
   getProfile(@Request() req: ExpressRequest) {
     return req.user;

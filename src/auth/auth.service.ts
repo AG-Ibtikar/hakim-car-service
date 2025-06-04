@@ -1,4 +1,4 @@
-import { Injectable, UnauthorizedException, ConflictException } from '@nestjs/common';
+import { Injectable, UnauthorizedException, ConflictException, ForbiddenException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from '../prisma/prisma.service';
 import { LoginDto } from './dto/login.dto';
@@ -60,15 +60,26 @@ export class AuthService {
   }
 
   async validateUser(email: string, password: string, role: UserRole) {
+    console.log('Validating user:', { email, role });
+    
     const user = await this.prisma.user.findUnique({
       where: { email },
     });
     
+    console.log('Found user:', user ? { ...user, password: '[REDACTED]' } : null);
+    
     if (!user || user.role !== role) {
+      console.log('User validation failed:', { 
+        userExists: !!user, 
+        userRole: user?.role, 
+        expectedRole: role 
+      });
       throw new UnauthorizedException('Invalid credentials or role');
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
+    console.log('Password validation:', { isPasswordValid });
+    
     if (!isPasswordValid) {
       throw new UnauthorizedException('Invalid credentials');
     }
@@ -78,7 +89,10 @@ export class AuthService {
   }
 
   async login(loginDto: LoginDto, role: UserRole) {
+    console.log('Login attempt:', { email: loginDto.email, role });
+    
     const user = await this.validateUser(loginDto.email, loginDto.password, role);
+    console.log('User validated successfully:', { id: user.id, email: user.email, role: user.role });
     
     const payload = {
       sub: user.id,
@@ -86,10 +100,28 @@ export class AuthService {
       role: user.role,
     };
 
+    const token = this.jwtService.sign(payload);
+    console.log('Generated token:', token);
+
     return {
-      access_token: this.jwtService.sign(payload),
+      access_token: token,
       user,
     };
+  }
+
+  async verifyAdmin(user: any) {
+    console.log('Verifying admin:', user);
+    
+    if (!user || user.role !== UserRole.ADMIN) {
+      console.log('Admin verification failed:', { 
+        userExists: !!user, 
+        userRole: user?.role 
+      });
+      throw new ForbiddenException('Not authorized to access admin features');
+    }
+    
+    console.log('Admin verification successful');
+    return { isAdmin: true };
   }
 
   async validateToken(token: string) {
