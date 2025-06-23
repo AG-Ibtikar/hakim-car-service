@@ -1,0 +1,316 @@
+.container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.header h2 {
+  color: #2d3748;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.addButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background: #4299e1;
+  color: white;
+  border: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.addButton:hover {
+  background: #3182ce;
+}
+
+.form {
+  background: #f7fafc;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.field label {
+  color: #4a5568;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.field input {
+  padding: 0.75rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  color: #2d3748;
+  transition: all 0.2s ease;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+.formActions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.submitButton {
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  background: #4299e1;
+  color: white;
+  border: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.submitButton:hover {
+  background: #3182ce;
+}
+
+.cancelButton {
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  background: #e2e8f0;
+  color: #4a5568;
+  border: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancelButton:hover {
+  background: #cbd5e0;
+}
+
+.vehicleList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.vehicleCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #f7fafc;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.vehicleCard:hover {
+  background: #edf2f7;
+}
+
+.vehicleInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.vehicleIcon {
+  font-size: 1.5rem;
+  color: #4299e1;
+}
+
+.vehicleInfo h3 {
+  color: #2d3748;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+}
+
+.vehicleInfo p {
+  color: #718096;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.vehicleActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.editButton,
+.deleteButton {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.editButton {
+  background: #ebf8ff;
+  color: #4299e1;
+}
+
+.editButton:hover {
+  background: #bee3f8;
+}
+
+.deleteButton {
+  background: #fff5f5;
+  color: #e53e3e;
+}
+
+.deleteButton:hover {
+  background: #fed7d7;
+}
+
+.emptyMessage {
+  text-align: center;
+  color: #718096;
+  font-size: 0.875rem;
+  padding: 2rem;
+}
+
+.error {
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  background: #fff5f5;
+  color: #e53e3e;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.success {
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  background: #f0fff4;
+  color: #38a169;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.imageUpload {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.fileInput {
+  display: none;
+}
+
+.uploadButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #4299e1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.uploadButton:hover {
+  background-color: #3182ce;
+  transform: translateY(-1px);
+}
+
+.uploadButton:disabled {
+  background-color: #e2e8f0;
+  color: #a0aec0;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.imagePreview {
+  width: 100%;
+  max-width: 200px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-top: 0.5rem;
+}
+
+.imagePreview img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.vehicleImage {
+  margin-top: 0.5rem;
+  width: 100%;
+  max-width: 150px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.vehicleImage img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .addButton {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .vehicleCard {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .vehicleActions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+} 

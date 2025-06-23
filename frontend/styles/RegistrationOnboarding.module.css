@@ -1,0 +1,267 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background: white;
+}
+
+.progress {
+  margin-bottom: 2rem;
+}
+
+.progressBar {
+  height: 4px;
+  background: #eee;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.progressFill {
+  height: 100%;
+  background: #FFD700;
+  transition: width 0.3s ease;
+}
+
+.progressText {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.step {
+  text-align: center;
+}
+
+.step h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.step p {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.inputGroup {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.inputGroup input,
+.inputGroup select {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #eee;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.inputGroup input:focus,
+.inputGroup select:focus {
+  border-color: #FFD700;
+  outline: none;
+}
+
+.inputGroup input.error,
+.inputGroup select.error {
+  border-color: #ff4444;
+}
+
+.errorText {
+  color: #ff4444;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  display: block;
+}
+
+.passwordInput {
+  position: relative;
+}
+
+.togglePassword {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.vehicleTypes,
+.serviceOptions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.vehicleType,
+.serviceOption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border: 2px solid #eee;
+  border-radius: 0.5rem;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.vehicleType:hover,
+.serviceOption:hover {
+  border-color: #FFD700;
+  transform: translateY(-2px);
+}
+
+.vehicleType.selected,
+.serviceOption.selected {
+  border-color: #FFD700;
+  background: #FFF9C4;
+}
+
+.vehicleType svg,
+.serviceOption svg {
+  font-size: 2rem;
+  color: #FFD700;
+  margin-bottom: 0.5rem;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.backButton,
+.skipButton,
+.nextButton {
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.backButton {
+  background: none;
+  border: 2px solid #eee;
+  color: #666;
+}
+
+.skipButton {
+  background: none;
+  border: none;
+  color: #666;
+}
+
+.nextButton {
+  background: #FFD700;
+  border: none;
+  color: #000;
+  flex: 1;
+}
+
+.backButton:hover {
+  border-color: #ddd;
+  color: #333;
+}
+
+.skipButton:hover {
+  color: #333;
+}
+
+.nextButton:hover {
+  background: #FFC800;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+}
+
+.inputGroup select {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background-color: white;
+  transition: all 0.3s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.5rem;
+  cursor: pointer;
+}
+
+.inputGroup select:hover {
+  border-color: #FFD700;
+}
+
+.inputGroup select:focus {
+  outline: none;
+  border-color: #FFD700;
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+}
+
+.inputGroup select.error {
+  border-color: #ef4444;
+}
+
+.inputGroup select.error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.errorMessage {
+  background-color: #fee2e2;
+  border: 1px solid #ef4444;
+  color: #b91c1c;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .step h2 {
+    font-size: 1.5rem;
+  }
+
+  .vehicleTypes,
+  .serviceOptions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .navigation {
+    flex-direction: column;
+  }
+
+  .backButton,
+  .skipButton,
+  .nextButton {
+    width: 100%;
+  }
+} 

@@ -1,0 +1,402 @@
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  position: relative;
+}
+
+.formTitle {
+  text-align: center;
+  color: var(--primary-gray);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.formSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inputGroup label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  color: #4a5568;
+}
+
+.inputIcon {
+  color: #718096;
+  font-size: 1.1rem;
+}
+
+.input,
+.select,
+.textarea {
+  background: #f7fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  color: #2d3748;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  outline: none;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+.input::placeholder,
+.select::placeholder,
+.textarea::placeholder {
+  color: #a0aec0;
+}
+
+.locationInput {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.locationButton {
+  background: var(--primary-yellow);
+  color: var(--primary-black);
+  border: none;
+  border-radius: 12px;
+  padding: 0.875rem;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.locationButton:hover {
+  background: var(--secondary-yellow);
+  transform: translateY(-2px);
+}
+
+.locationButton:disabled {
+  background: var(--light-gray);
+  cursor: not-allowed;
+}
+
+.vehicleTypeContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.vehicleTypeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+}
+
+.vehicleTypeButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background: #f7fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.vehicleTypeButton:hover {
+  background: #edf2f7;
+  transform: translateY(-2px);
+}
+
+.vehicleTypeButton.selected {
+  background: var(--light-yellow);
+  border-color: var(--primary-yellow);
+  color: var(--primary-yellow);
+}
+
+.vehicleTypeButton svg {
+  font-size: 1.5rem;
+}
+
+.vehicleTypeButton span {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.serviceOptionsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.serviceButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background: #f7fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.25rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.serviceButton:hover {
+  background: #edf2f7;
+  transform: translateY(-2px);
+}
+
+.serviceButton.selected {
+  background: var(--light-yellow);
+  border-color: var(--primary-yellow);
+  color: var(--primary-yellow);
+}
+
+.serviceButton svg {
+  font-size: 1.75rem;
+}
+
+.serviceButton span {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.backButton,
+.submitButton {
+  padding: 0.875rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 120px;
+}
+
+.backButton {
+  background: var(--light-gray);
+  border: 2px solid var(--primary-gray);
+  color: var(--primary-gray);
+  padding: 0.875rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 120px;
+}
+
+.backButton:hover {
+  background: var(--light-gray);
+  transform: translateY(-2px);
+}
+
+.submitButton {
+  background: var(--primary-yellow);
+  border: none;
+  color: var(--primary-black);
+  padding: 0.875rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 120px;
+}
+
+.submitButton:hover {
+  background: var(--secondary-yellow);
+  transform: translateY(-2px);
+  box-shadow: var(--box-shadow);
+}
+
+.submitButton:disabled {
+  background: var(--light-gray);
+  cursor: not-allowed;
+}
+
+.errorContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #fff5f5;
+  border: 1px solid #feb2b2;
+  border-radius: 12px;
+  padding: 1rem;
+  color: #c53030;
+  margin-bottom: 1rem;
+}
+
+.errorIcon {
+  font-size: 1.25rem;
+}
+
+.successContainer {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.successContent {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.successIcon {
+  font-size: 4rem;
+  color: var(--primary-yellow);
+  margin-bottom: 1rem;
+}
+
+.successIcon svg {
+  width: 64px;
+  height: 64px;
+}
+
+.requestDetails {
+  margin: 2rem 0;
+  text-align: left;
+  background: var(--light-gray);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+}
+
+.requestDetails h3 {
+  color: var(--primary-gray);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.detailItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.detailLabel {
+  color: var(--primary-gray);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.detailValue {
+  color: var(--primary-black);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.successMessage {
+  color: var(--primary-gray);
+  font-size: 1.1rem;
+  margin: 1rem 0;
+}
+
+.successSubMessage {
+  color: var(--secondary-gray);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.backButton {
+  background: var(--primary-yellow);
+  color: var(--primary-black);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  width: 100%;
+  max-width: 300px;
+}
+
+.backButton:hover {
+  background: var(--secondary-yellow);
+  transform: translateY(-2px);
+  box-shadow: var(--box-shadow);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .form {
+    padding: 1.5rem;
+  }
+
+  .vehicleTypeGrid,
+  .serviceOptionsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .formActions {
+    flex-direction: column;
+  }
+
+  .backButton,
+  .submitButton {
+    width: 100%;
+  }
+} 

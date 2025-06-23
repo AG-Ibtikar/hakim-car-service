@@ -1,0 +1,213 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.card {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 1.5rem;
+  transition: var(--transition);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  background: var(--light-gray);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-yellow);
+  font-size: 1.5rem;
+  transition: var(--transition);
+}
+
+.card:hover .icon {
+  background: var(--primary-yellow);
+  color: var(--primary-black);
+}
+
+.trend {
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.change {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--border-radius);
+  background: var(--light-gray);
+}
+
+.change svg {
+  font-size: 0.75rem;
+}
+
+.title {
+  color: var(--secondary-gray);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.value {
+  color: var(--primary-gray);
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.sections {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.section {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 1.5rem;
+  height: 100%;
+  width: 100%;
+}
+
+.section h3 {
+  color: var(--primary-gray);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 1.25rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.activityList {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.noActivity {
+  color: var(--secondary-gray);
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 2rem;
+  background: var(--light-gray);
+  border-radius: var(--border-radius);
+  width: 100%;
+}
+
+.quickActions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.actionButton {
+  background: var(--light-gray);
+  color: var(--primary-gray);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 1rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.actionButton:hover {
+  background: var(--primary-yellow);
+  color: var(--primary-black);
+  transform: translateY(-1px);
+  box-shadow: var(--box-shadow);
+}
+
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    width: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .sections {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .section {
+    min-height: auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .card {
+    padding: 1.25rem;
+    width: 100%;
+  }
+
+  .value {
+    font-size: 1.5rem;
+  }
+
+  .icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 1rem;
+    width: 100%;
+  }
+
+  .section {
+    padding: 1rem;
+    width: 100%;
+  }
+
+  .actionButton {
+    padding: 0.875rem 1rem;
+    width: 100%;
+  }
+} 
