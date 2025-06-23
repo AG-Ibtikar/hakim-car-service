@@ -160,8 +160,12 @@ setup_backend() {
     
     cd $APP_DIR/backend/backend-app
     
-    # Install dependencies
-    npm install
+    # Install dependencies with legacy peer deps to handle version conflicts
+    log "Installing backend dependencies..."
+    if ! npm install --legacy-peer-deps; then
+        warning "Standard install failed, trying with --force..."
+        npm install --force
+    fi
     
     # Create environment file
     cat > .env << EOF
@@ -209,8 +213,12 @@ setup_frontend() {
     
     cd $APP_DIR/frontend
     
-    # Install dependencies
-    npm install
+    # Install dependencies with legacy peer deps to handle version conflicts
+    log "Installing frontend dependencies..."
+    if ! npm install --legacy-peer-deps; then
+        warning "Standard install failed, trying with --force..."
+        npm install --force
+    fi
     
     # Create environment file
     cat > .env.local << EOF
