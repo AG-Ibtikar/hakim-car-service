@@ -200,6 +200,7 @@ public/uploads/
 # Backup files
 *.backup
 *.bak
+backups/
 
 # OS generated files
 .DS_Store
