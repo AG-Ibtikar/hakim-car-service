@@ -1,0 +1,20 @@
+{
+  "name": "hakim-car-service",
+  "version": "1.0.0",
+  "description": "Car service management system",
+  "scripts": {
+    "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
+    "start:frontend": "cd frontend && npm run dev",
+    "start:backend": "cd backend/backend-app && npm run start:dev",
+    "install:all": "npm install && cd frontend && npm install && cd ../backend/backend-app && npm install",
+    "build": "concurrently \"npm run build:frontend\" \"npm run build:backend\"",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend/backend-app && npm run build"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "@googlemaps/js-api-loader": "^1.16.8"
+  }
+}
