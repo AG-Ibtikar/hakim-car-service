@@ -186,7 +186,7 @@ const ServicesPage = () => {
           return;
         }
 
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/service-requests`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/service-requests/my-requests`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -271,7 +271,7 @@ const ServicesPage = () => {
       setIsFormOpen(false);
       
       // Refresh service requests
-      const requestsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/service-requests`, {
+      const requestsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/service-requests/my-requests`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },

@@ -59,7 +59,7 @@ export const serviceRequestsApi = {
       throw new Error('No authentication token found');
     }
 
-    const response = await axios.get(`${API_URL}/api/service-requests`, {
+    const response = await axios.get(`${API_URL}/api/service-requests/my-requests`, {
       headers: {
         Authorization: `Bearer ${session.user.accessToken}`,
       },
