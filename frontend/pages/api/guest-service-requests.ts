@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
@@ -12,7 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     console.log('Received request body:', req.body);
     
     // Forward the request to the backend
-    const response = await axios.post(`${API_URL}/api/service-requests/guest`, req.body, {
+    const response = await axios.post(`${API_URL}/service-requests/guest`, req.body, {
       headers: {
         'Content-Type': 'application/json',
       },

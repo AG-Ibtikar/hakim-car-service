@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getSession } from 'next-auth/react';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
 
 export interface ServiceRequest {
   id: string;
@@ -44,7 +44,7 @@ export const serviceRequestsApi = {
       throw new Error('No authentication token found');
     }
 
-    const response = await axios.post(`${API_URL}/api/service-requests`, data, {
+    const response = await axios.post(`${API_URL}/service-requests`, data, {
       headers: {
         Authorization: `Bearer ${session.user.accessToken}`,
         'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ export const serviceRequestsApi = {
       throw new Error('No authentication token found');
     }
 
-    const response = await axios.get(`${API_URL}/api/service-requests/my-requests`, {
+    const response = await axios.get(`${API_URL}/service-requests/my-requests`, {
       headers: {
         Authorization: `Bearer ${session.user.accessToken}`,
       },
@@ -73,7 +73,7 @@ export const serviceRequestsApi = {
       throw new Error('No authentication token found');
     }
 
-    const response = await axios.get(`${API_URL}/api/service-requests/${id}`, {
+    const response = await axios.get(`${API_URL}/service-requests/${id}`, {
       headers: {
         Authorization: `Bearer ${session.user.accessToken}`,
       },
@@ -86,7 +86,7 @@ export const serviceRequestsApi = {
     if (!session?.user?.accessToken) {
       throw new Error('No authentication token found');
     }
-    const response = await axios.patch(`${API_URL}/api/service-requests/${id}`, data, {
+    const response = await axios.patch(`${API_URL}/service-requests/${id}`, data, {
       headers: {
         Authorization: `Bearer ${session.user.accessToken}`,
         'Content-Type': 'application/json',
