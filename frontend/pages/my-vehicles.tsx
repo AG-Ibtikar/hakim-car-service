@@ -3,8 +3,8 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { FaPlus, FaEdit, FaTrash, FaTimes } from 'react-icons/fa';
 import DashboardLayout from '../components/DashboardLayout';
-import { vehiclesApi, Vehicle, CreateVehicleDto } from '../services/vehicles';
-import { vehicleTypes, vehicleMakes, VehicleType } from '../data/vehicleData';
+import { vehiclesApi, Vehicle, CreateVehicleDto, VehicleType } from '../services/vehicles';
+import { vehicleTypes, vehicleMakes } from '../data/vehicleData';
 import styles from '../styles/MyVehicles.module.css';
 
 export default function MyVehicles() {
@@ -13,8 +13,8 @@ export default function MyVehicles() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [showAddModal, setShowAddModal] = useState(false);
-  const [newVehicle, setNewVehicle] = useState<CreateVehicleDto & { type: VehicleType }>({
-    type: 'Sedan',
+  const [newVehicle, setNewVehicle] = useState<CreateVehicleDto>({
+    type: VehicleType.SEDAN,
     make: '',
     model: '',
     year: new Date().getFullYear(),
@@ -72,7 +72,7 @@ export default function MyVehicles() {
       setVehicles([vehicle, ...vehicles]);
       setShowAddModal(false);
       setNewVehicle({
-        type: 'Sedan',
+        type: VehicleType.SEDAN,
         make: '',
         model: '',
         year: new Date().getFullYear(),
