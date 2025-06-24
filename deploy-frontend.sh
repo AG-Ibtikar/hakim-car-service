@@ -77,7 +77,7 @@ fi
 print_status "Creating production environment file..."
 run_on_vps "cd $FRONTEND_DIR && cat > .env.production << 'EOF'
 # Production Environment Configuration
-NEXT_PUBLIC_API_URL=http://147.93.72.229:3001
+NEXT_PUBLIC_API_URL=https://dev-api.hakimauto.com
 
 # Google Maps API Key (update this with your actual key)
 NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
@@ -128,7 +128,12 @@ if ! run_on_vps "[ -f '/etc/nginx/sites-available/hakim-frontend' ]"; then
     run_on_vps "cat > /etc/nginx/sites-available/hakim-frontend << 'EOF'
 server {
     listen 80;
-    server_name hakimcarservice.com www.hakimcarservice.com 147.93.72.229;
+    listen 443 ssl;
+    server_name dev.hakimauto.com;
+
+    # SSL configuration (you'll need to add your SSL certificates)
+    # ssl_certificate /path/to/your/certificate.crt;
+    # ssl_certificate_key /path/to/your/private.key;
 
     location / {
         proxy_pass http://localhost:3000;
@@ -154,7 +159,7 @@ print_success "🎉 Frontend deployment completed successfully!"
 print_status "Frontend is running on:"
 print_status "  - Direct: http://147.93.72.229:3000"
 print_status "  - Via Nginx: http://147.93.72.229 (port 80)"
-print_status "  - Domain: http://hakimcarservice.com (if configured)"
+print_status "  - Domain: https://dev.hakimauto.com (if configured)"
 
 print_status "To monitor the frontend logs:"
 print_status "  ssh root@147.93.72.229 'tail -f $FRONTEND_DIR/frontend.log'"
@@ -162,4 +167,5 @@ print_status "  ssh root@147.93.72.229 'tail -f $FRONTEND_DIR/frontend.log'"
 print_warning "Don't forget to:"
 print_warning "  1. Update the Google Maps API key in .env.production"
 print_warning "  2. Configure your domain DNS to point to 147.93.72.229"
-print_warning "  3. Set up SSL certificates for production" 
+print_warning "  3. Set up SSL certificates for production"
+print_warning "  4. Update CORS settings in backend for https://dev.hakimauto.com" 

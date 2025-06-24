@@ -100,10 +100,10 @@ PORT=3001
 NODE_ENV=production
 
 # Backend URL for file uploads and API
-BACKEND_URL=http://147.93.72.229:3001
+BACKEND_URL=https://dev-api.hakimauto.com
 
 # Frontend URL for CORS
-FRONTEND_URL=http://147.93.72.229:3000
+FRONTEND_URL=https://dev.hakimauto.com
 
 # AWS S3 (optional)
 AWS_ACCESS_KEY_ID=
@@ -141,7 +141,7 @@ sleep 3
 # Check if the server is running
 if run_on_vps "curl -s http://localhost:3001/health > /dev/null"; then
     print_success "Backend server is running successfully on port 3001"
-    print_status "Backend URL: http://147.93.72.229:3001"
+    print_status "Backend URL: https://dev-api.hakimauto.com"
 else
     print_error "Backend server failed to start"
     print_status "Checking logs..."
@@ -156,7 +156,12 @@ if ! run_on_vps "[ -f '/etc/nginx/sites-available/hakim-backend' ]"; then
     run_on_vps "cat > /etc/nginx/sites-available/hakim-backend << 'EOF'
 server {
     listen 80;
-    server_name api.hakimcarservice.com 147.93.72.229;
+    listen 443 ssl;
+    server_name dev-api.hakimauto.com;
+
+    # SSL configuration (you'll need to add your SSL certificates)
+    # ssl_certificate /path/to/your/certificate.crt;
+    # ssl_certificate_key /path/to/your/private.key;
 
     location / {
         proxy_pass http://localhost:3001;
@@ -180,9 +185,9 @@ fi
 
 print_success "🎉 Backend deployment completed successfully!"
 print_status "Backend is running on:"
-print_status "  - Direct: http://147.93.72.229:3001"
+print_status "  - Direct: https://dev-api.hakimauto.com"
 print_status "  - Via Nginx: http://147.93.72.229 (port 80)"
-print_status "  - Health check: http://147.93.72.229:3001/health"
+print_status "  - Health check: https://dev-api.hakimauto.com/health"
 
 print_status "To monitor the backend logs:"
 print_status "  ssh root@147.93.72.229 'tail -f $BACKEND_DIR/backend.log'" 

@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['localhost', '147.93.72.229', 'api.hakimcarservice.com'],
+    domains: ['localhost', '147.93.72.229', 'api.hakimcarservice.com', 'dev-api.hakimauto.com'],
   },
   async rewrites() {
     return [
