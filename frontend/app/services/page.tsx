@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { MapPinIcon } from '@heroicons/react/24/outline';
+import { Loader } from '@googlemaps/js-api-loader';
 import LocationPicker from '../components/LocationPicker';
 
 interface Vehicle {
@@ -102,6 +103,7 @@ const ServicesPage = () => {
   const [isLoadingRequests, setIsLoadingRequests] = useState(true);
   const [showMap, setShowMap] = useState(false);
   const [mapLocation, setMapLocation] = useState<{ lat: number; lng: number } | null>(null);
+  const [geocoder, setGeocoder] = useState<google.maps.Geocoder | null>(null);
   const [filters, setFilters] = useState({
     date: '',
     vehicleId: '',
@@ -122,6 +124,27 @@ const ServicesPage = () => {
     },
   });
   const [isGettingLocation, setIsGettingLocation] = useState(false);
+
+  // Initialize Google Maps API
+  useEffect(() => {
+    const initGoogleMaps = async () => {
+      const loader = new Loader({
+        apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '',
+        version: 'weekly',
+        libraries: ['places'],
+      });
+
+      try {
+        const google = await loader.load();
+        const geocoder = new google.maps.Geocoder();
+        setGeocoder(geocoder);
+      } catch (error) {
+        console.error('Error loading Google Maps:', error);
+      }
+    };
+
+    initGoogleMaps();
+  }, []);
 
   useEffect(() => {
     const fetchVehicles = async () => {
