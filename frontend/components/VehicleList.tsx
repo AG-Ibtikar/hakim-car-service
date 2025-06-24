@@ -14,7 +14,7 @@ export default function VehicleList({ vehicles, onAdd, onEdit, onDelete }: Vehic
   const [isAdding, setIsAdding] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [formData, setFormData] = useState<CreateVehicleDto>({
-    type: 'Sedan',
+    type: VehicleType.SEDAN,
     make: '',
     model: '',
     year: new Date().getFullYear(),
@@ -30,7 +30,7 @@ export default function VehicleList({ vehicles, onAdd, onEdit, onDelete }: Vehic
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: name === 'year' ? parseInt(value) : value
+      [name]: name === 'year' ? parseInt(value) : name === 'type' ? value as VehicleType : value
     }));
   };
 
@@ -120,7 +120,7 @@ export default function VehicleList({ vehicles, onAdd, onEdit, onDelete }: Vehic
 
   const resetForm = () => {
     setFormData({
-      type: 'Sedan',
+      type: VehicleType.SEDAN,
       make: '',
       model: '',
       year: new Date().getFullYear(),
@@ -159,14 +159,14 @@ export default function VehicleList({ vehicles, onAdd, onEdit, onDelete }: Vehic
                 onChange={handleChange}
                 required
               >
-                <option value="Sedan">Sedan</option>
-                <option value="SUV">SUV</option>
-                <option value="Truck">Truck</option>
-                <option value="Van">Van</option>
-                <option value="Sports Car">Sports Car</option>
-                <option value="Luxury">Luxury</option>
-                <option value="Hybrid">Hybrid</option>
-                <option value="Electric">Electric</option>
+                <option value={VehicleType.SEDAN}>Sedan</option>
+                <option value={VehicleType.SUV}>SUV</option>
+                <option value={VehicleType.TRUCK}>Truck</option>
+                <option value={VehicleType.VAN}>Van</option>
+                <option value={VehicleType.SPORTS_CAR}>Sports Car</option>
+                <option value={VehicleType.LUXURY}>Luxury</option>
+                <option value={VehicleType.HYBRID}>Hybrid</option>
+                <option value={VehicleType.ELECTRIC}>Electric</option>
               </select>
             </div>
 
