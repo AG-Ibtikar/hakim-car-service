@@ -77,7 +77,7 @@ fi
 print_status "Creating production environment file..."
 run_on_vps "cd $FRONTEND_DIR && cat > .env.production << 'EOF'
 # Production Environment Configuration
-NEXT_PUBLIC_API_URL=https://dev-api.hakimauto.com
+NEXT_PUBLIC_API_URL=https://dev-api.hakimauto.com/api
 
 # Google Maps API Key (update this with your actual key)
 NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
