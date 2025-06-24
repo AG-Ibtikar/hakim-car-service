@@ -39,9 +39,25 @@ export class ServiceRequestsService {
   }
 
   async create(createServiceRequestDto: CreateServiceRequestDto) {
+    // Get user's city if userId is provided
+    let userCity = null;
+    if (createServiceRequestDto.userId) {
+      const user = await this.prisma.user.findUnique({
+        where: { id: createServiceRequestDto.userId },
+        select: { city: true }
+      });
+      userCity = user?.city;
+    }
+
+    // Prepare location data with city
+    const locationData = {
+      ...createServiceRequestDto.location,
+      city: createServiceRequestDto.location.city || userCity || ''
+    };
+
     const data: Prisma.ServiceRequestCreateInput = {
       serviceType: createServiceRequestDto.serviceType as ServiceCategory,
-      location: createServiceRequestDto.location,
+      location: locationData,
       description: createServiceRequestDto.description,
       estimatedCost: createServiceRequestDto.estimatedCost,
       scheduledTime: createServiceRequestDto.scheduledTime,
@@ -65,7 +81,8 @@ export class ServiceRequestsService {
             email: true,
             firstName: true,
             lastName: true,
-            phoneNumber: true
+            phoneNumber: true,
+            city: true
           }
         },
         vehicle: true
@@ -82,7 +99,8 @@ export class ServiceRequestsService {
             email: true,
             firstName: true,
             lastName: true,
-            phoneNumber: true
+            phoneNumber: true,
+            city: true
           }
         },
         vehicle: true
@@ -100,7 +118,8 @@ export class ServiceRequestsService {
             email: true,
             firstName: true,
             lastName: true,
-            phoneNumber: true
+            phoneNumber: true,
+            city: true
           }
         },
         vehicle: true
@@ -126,7 +145,8 @@ export class ServiceRequestsService {
             email: true,
             firstName: true,
             lastName: true,
-            phoneNumber: true
+            phoneNumber: true,
+            city: true
           }
         },
         vehicle: true
@@ -153,7 +173,8 @@ export class ServiceRequestsService {
               email: true,
               firstName: true,
               lastName: true,
-              phoneNumber: true
+              phoneNumber: true,
+              city: true
             }
           },
           vehicle: true

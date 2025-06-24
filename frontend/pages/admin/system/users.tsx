@@ -53,7 +53,7 @@ export default function AdminUsers() {
         throw new Error('Not authenticated. Please log in.');
       }
 
-      const response = await fetch('http://localhost:3001/api/users', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/users`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -91,11 +91,11 @@ export default function AdminUsers() {
         throw new Error('Not authenticated. Please log in.');
       }
 
-      const response = await fetch('http://localhost:3001/api/users', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/users`, {
         method: 'POST',
         headers: {
+          'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
         },
         body: JSON.stringify(newUser)
       });
@@ -140,11 +140,11 @@ export default function AdminUsers() {
         throw new Error('Not authenticated. Please log in.');
       }
 
-      const response = await fetch(`http://localhost:3001/api/users/${userId}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/users/${userId}`, {
         method: 'PATCH',
         headers: {
+          'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
         },
         body: JSON.stringify({ role: newRole })
       });
@@ -187,7 +187,7 @@ export default function AdminUsers() {
         throw new Error('Not authenticated. Please log in.');
       }
 
-      const response = await fetch(`http://localhost:3001/api/users/${userId}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/users/${userId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`

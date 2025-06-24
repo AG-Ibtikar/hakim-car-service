@@ -97,7 +97,7 @@ export default function RegistrationForm() {
     try {
       console.log('Submitting registration data:', formData);
 
-      const response = await fetch('http://localhost:3001/api/auth/register/customer', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/auth/register/customer`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

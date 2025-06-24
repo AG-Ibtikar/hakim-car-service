@@ -18,6 +18,7 @@ model User {
   firstName     String
   lastName      String
   phoneNumber   String
+  city          String?
   role          UserRole  @default(CUSTOMER)
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt

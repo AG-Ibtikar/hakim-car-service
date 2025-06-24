@@ -19,6 +19,10 @@ export class RegisterDto {
   @IsOptional()
   phoneNumber?: string;
 
+  @IsString()
+  @IsOptional()
+  city?: string;
+
   @IsEnum(UserRole)
   @IsOptional()
   role?: UserRole;

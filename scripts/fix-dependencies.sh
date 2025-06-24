@@ -34,8 +34,8 @@ print_error() {
 cd backend/backend-app
 
 print_status "Cleaning npm cache..."
-npm cache clean --force
-
+    npm cache clean --force
+    
 print_status "Removing node_modules and package-lock.json..."
 rm -rf node_modules package-lock.json
 

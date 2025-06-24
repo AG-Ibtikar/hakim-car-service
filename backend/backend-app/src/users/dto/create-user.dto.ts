@@ -23,6 +23,10 @@ export class CreateUserDto {
   @MinLength(6)
   password: string;
 
+  @IsString()
+  @IsOptional()
+  city?: string;
+
   @IsEnum(UserRole)
   @IsNotEmpty()
   role: UserRole;

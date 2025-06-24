@@ -11,6 +11,10 @@ export class LocationDto {
   @IsString()
   address: string;
 
+  @IsString()
+  @IsOptional()
+  city?: string;
+
   [key: string]: any; // Add index signature to match Prisma's JSON type
 }
 

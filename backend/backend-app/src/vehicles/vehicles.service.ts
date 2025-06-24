@@ -8,11 +8,15 @@ export class VehiclesService {
   constructor(private prisma: PrismaService) {}
 
   async create(createVehicleDto: CreateVehicleDto, user: any): Promise<any> {
-    const { vin, ...rest } = createVehicleDto;
     return this.prisma.vehicle.create({
       data: {
-        ...rest,
-        vin: vin || null,
+        type: createVehicleDto.type,
+        make: createVehicleDto.make,
+        model: createVehicleDto.model,
+        year: createVehicleDto.year,
+        licensePlate: createVehicleDto.licensePlate,
+        vin: createVehicleDto.vin || null,
+        vinImage: createVehicleDto.vinImage || null,
         userId: user.id,
       },
     });
@@ -29,7 +33,13 @@ export class VehiclesService {
 
     return this.prisma.vehicle.create({
       data: {
-        ...createVehicleDto,
+        type: createVehicleDto.type,
+        make: createVehicleDto.make,
+        model: createVehicleDto.model,
+        year: createVehicleDto.year,
+        licensePlate: createVehicleDto.licensePlate,
+        vin: createVehicleDto.vin || null,
+        vinImage: createVehicleDto.vinImage || null,
         userId,
       },
     });
@@ -59,7 +69,15 @@ export class VehiclesService {
     
     return this.prisma.vehicle.update({
       where: { id },
-      data: updateVehicleDto,
+      data: {
+        type: updateVehicleDto.type,
+        make: updateVehicleDto.make,
+        model: updateVehicleDto.model,
+        year: updateVehicleDto.year,
+        licensePlate: updateVehicleDto.licensePlate,
+        vin: updateVehicleDto.vin || null,
+        vinImage: updateVehicleDto.vinImage || null,
+      },
     });
   }
 

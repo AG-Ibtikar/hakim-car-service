@@ -130,6 +130,7 @@ export default function RegistrationOnboarding() {
         email: formData.email,
         password: formData.password,
         phoneNumber: formData.phoneNumber,
+        city: formData.city,
         role: 'CUSTOMER'
       };
 

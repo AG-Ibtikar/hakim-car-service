@@ -40,6 +40,7 @@ interface ServiceRequestDetails {
     latitude: number;
     longitude: number;
     address: string;
+    city: string;
   };
   description: string;
   customerName: string;
@@ -136,8 +137,25 @@ export default function GuestQuickServiceForm({ onBack }: GuestQuickServiceFormP
       const location = {
         latitude: parseFloat(locationParts[0]) || 0,
         longitude: parseFloat(locationParts[1]) || 0,
-        address: form.location
+        address: form.location,
+        city: '' // Will be extracted from address or set by user
       };
+
+      // Try to extract city from the address
+      if (form.location && !form.location.includes(',')) {
+        // If it's just coordinates, we'll need to get city from reverse geocoding
+        try {
+          const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${location.latitude}&lon=${location.longitude}`);
+          const data = await res.json();
+          if (data.address && data.address.city) {
+            location.city = data.address.city;
+          } else if (data.address && data.address.town) {
+            location.city = data.address.town;
+          }
+        } catch (error) {
+          console.log('Could not extract city from coordinates');
+        }
+      }
 
       const requestData = {
         serviceType: form.service,
