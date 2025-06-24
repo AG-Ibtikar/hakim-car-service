@@ -99,6 +99,12 @@ JWT_EXPIRES_IN=7d
 PORT=3001
 NODE_ENV=production
 
+# Backend URL for file uploads and API
+BACKEND_URL=http://147.93.72.229:3001
+
+# Frontend URL for CORS
+FRONTEND_URL=http://147.93.72.229:3000
+
 # AWS S3 (optional)
 AWS_ACCESS_KEY_ID=
 AWS_SECRET_ACCESS_KEY=
