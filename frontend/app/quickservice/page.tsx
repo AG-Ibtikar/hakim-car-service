@@ -27,7 +27,7 @@ export default function QuickServicePage() {
     setError('');
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/quick-service-requests`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/quick-service-requests`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

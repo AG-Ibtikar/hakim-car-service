@@ -11,7 +11,7 @@ export default async function handler(
   try {
     console.log('Admin login request body:', req.body);
     
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/login/admin`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login/admin`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

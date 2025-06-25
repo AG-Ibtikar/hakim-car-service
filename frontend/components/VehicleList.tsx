@@ -47,7 +47,7 @@ export default function VehicleList({ vehicles, onAdd, onEdit, onDelete }: Vehic
       formData.append('file', file);
 
       // Upload the image
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/upload`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api'}/upload`, {
         method: 'POST',
         body: formData,
       });
