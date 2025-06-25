@@ -142,7 +142,7 @@ const AdminRequestsPage = () => {
         }
 
         // Then fetch service requests
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/service-requests`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/service-requests/admin/all`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -203,7 +203,7 @@ const AdminRequestsPage = () => {
       }
 
       // Then update the request status
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/service-requests/${requestId}/status`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/service-requests/admin/${requestId}/status`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

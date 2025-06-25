@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 export async function GET() {
   try {
     // Fetch directly from your backend API
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/requests`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/service-requests/admin/all`);
 
     if (!response.ok) {
       throw new Error('Failed to fetch requests from backend');
