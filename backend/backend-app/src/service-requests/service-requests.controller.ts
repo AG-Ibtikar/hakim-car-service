@@ -3,12 +3,16 @@ import { ServiceRequestsService } from './service-requests.service';
 import { CreateServiceRequestDto } from './dto/create-service-request.dto';
 import { UpdateServiceRequestDto } from './dto/update-service-request.dto';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { RolesGuard } from '../auth/guards/roles.guard';
+import { Roles } from '../auth/decorators/roles.decorator';
+import { UserRole } from '../enums/user-role.enum';
 import { Request as ExpressRequest } from 'express';
 
 interface RequestWithUser extends ExpressRequest {
   user: {
     id: string;
     email: string;
+    role: string;
   };
 }
 
@@ -58,5 +62,20 @@ export class ServiceRequestsController {
   @UseGuards(JwtAuthGuard)
   remove(@Param('id') id: string) {
     return this.serviceRequestsService.remove(id);
+  }
+
+  // Admin endpoints
+  @Get('admin/all')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN)
+  findAllForAdmin() {
+    return this.serviceRequestsService.findAllForAdmin();
+  }
+
+  @Patch('admin/:id/status')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN)
+  updateStatus(@Param('id') id: string, @Body() body: { status: string }) {
+    return this.serviceRequestsService.updateStatus(id, body.status);
   }
 } 

@@ -194,4 +194,52 @@ export class ServiceRequestsService {
       throw new NotFoundException(`Service request with ID ${id} not found`);
     }
   }
+
+  // Admin methods
+  async findAllForAdmin() {
+    return this.prisma.serviceRequest.findMany({
+      include: {
+        user: {
+          select: {
+            id: true,
+            email: true,
+            firstName: true,
+            lastName: true,
+            phoneNumber: true,
+            city: true
+          }
+        },
+        vehicle: true
+      },
+      orderBy: {
+        createdAt: 'desc'
+      }
+    });
+  }
+
+  async updateStatus(id: string, status: string) {
+    try {
+      return await this.prisma.serviceRequest.update({
+        where: { id },
+        data: {
+          status: status as ServiceRequestStatus
+        },
+        include: {
+          user: {
+            select: {
+              id: true,
+              email: true,
+              firstName: true,
+              lastName: true,
+              phoneNumber: true,
+              city: true
+            }
+          },
+          vehicle: true
+        }
+      });
+    } catch (error) {
+      throw new NotFoundException(`Service request with ID ${id} not found`);
+    }
+  }
 } 
